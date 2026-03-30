@@ -11,22 +11,18 @@ class HC_SR04_Asynchro{
   uint8_t pineEcho, pinTrig;
  public:
   HC_SR04_Asynchro(
-      const int pin_trig = -1, const int pin_echo = -1,
       const int send_time_span = 200, const int send_time_long = 10,
-      const int read_time_min = 100, const int read_time_max = ):
-    pinTrig(pin_trig), pinEcho(pin_echo),
+      //⇧最短だと60だが多めに見積もって200とする資料も多い
+      const int read_time_min = 100, const int read_time_max = 23500):
     sendTimeSpan(send_time_span), sendTimeLong(send_time_long),
-    readTimeMin(read_time_min), readTimeMax(read_time_max)
-  {};
+    readTimeMin(read_time_min), readTimeMax(read_time_max){
+  };
   
-  bool begin(const int Trig = -1, const int Echo = -1){
-    if(this->pinTrig<0) this->pinTrig = Trig;
-    if(this->pinEcho<0) this->pinEcho = Echo;
-    if(this->pineEcho<0 || this->pineTrig<0) return false;
+  void begin(uint8_t trig, uint8_t echo){
+    this->pinTrig = trig; this->pinEcho = echo;
     pinMode(this->pinTrig, OUTPUT);
     pinMode(this->pineEcho, INPUT);
     attachInterruptArg(digitalPinToInterrupt(this->pinEcho), echoISR, this, CHNGE);
-    return true;
   }
 
   bool send(){
