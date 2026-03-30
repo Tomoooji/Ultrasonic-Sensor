@@ -1,8 +1,8 @@
 # Ultrasonic-Sensor
 control HC-SR04
 
--src
-  -UltraSonic  
+- src
+  - UltraSonic  
     ブロッキングver(ArduinoとESP32に対応)
-  -AsynchroUltraSonic  
+  - AsynchroUltraSonic  
     非同期クラス化ver(ESP32のみ)
