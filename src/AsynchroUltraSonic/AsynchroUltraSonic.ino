@@ -5,6 +5,7 @@ class HC_SR04_Asynchro{
   volatile unsigned long timeStamp;
   volatile unsigned long pulseLength;
   volatile bool isReading;
+  volatile bool isWaiting;
   const int sendTimeSpan/*ms*/, sendTimeLong/*us*/;
   const int readTimeMin/*us*/, readTimeMax/*us*/;
   int distance;
@@ -28,6 +29,10 @@ class HC_SR04_Asynchro{
   bool send(){
     if(this->isReading || this->timeStamp <= this->sendTimeSpan) return false;
     //actual send procedure
+    digitalWrite(this->pinTrig, HIGH);
+    delayMicrosecond(this->sendTimeLong);
+    digitalWrite(this->pinTrig, LOW);
+    this->isWaiting = true;
     return true;
   }
 
