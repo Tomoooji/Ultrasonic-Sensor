@@ -4,7 +4,7 @@
 constexpr int SONIC_SPEED = 340;
 
 class HCSR04 {
-private:
+protected:
   const uint8_t &pin_trig;
   const uint8_t &pin_echo;
   const int send_pulse_length; //[microsec]
