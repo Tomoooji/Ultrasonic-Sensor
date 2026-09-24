@@ -17,8 +17,40 @@ private:
     }
   }
 
-public:
+  public:
   using HCSR04::HCSR04;
+  HCSR04Async(HCSR04Async &&other) noexcept {
+    this->trigger_pin = other.trigger_pin;
+    this->echo_pin = other.echo_pin;
+    this->send_span_min = other.send_span_min;
+    this->distance.store(other.distance.load());
+  }
+  /* ここら辺は一旦使わないだろうのでコメントアウト
+  HCSR04Async(const HCSR04Async &other) {
+    this->trigger_pin = other.trigger_pin;
+    this->echo_pin = other.echo_pin;
+    this->send_span_min = other.send_span_min;
+    this->distance.store(other.distance.load());
+  }
+  HCSR04Async &operator=(const HCSR04Async &other) {
+    if (this != &other) {
+      this->trigger_pin = other.trigger_pin;
+      this->echo_pin = other.echo_pin;
+      this->send_span_min = other.send_span_min;
+      this->distance.store(other.distance.load());
+    }
+    return *this;
+  }
+  HCSR04Async &operator=(HCSR04Async &&other) noexcept {
+    if (this != &other) {
+      this->trigger_pin = other.trigger_pin;
+      this->echo_pin = other.echo_pin;
+      this->send_span_min = other.send_span_min;
+      this->distance.store(other.distance.load());
+    }
+    return *this;
+  }
+  */
 
   void begin() override {
     HCSR04::begin();
