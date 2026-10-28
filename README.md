@@ -1,8 +1,11 @@
 # Ultrasonic-Sensor
-control HC-SR04
+Control HC-SR04
 
 ```
 Ultrasonic-Sensor/
+├─ examples/
+│  └─ Measurement/
+│     └─ Measurement.ino
 ├─ src/
 │  ├─ UltraSonic.h       # ブロッキングver(ArduinoとESP32に対応)
 │  └─ UltraSonicAsync.h  # 非同期ver(ESP32のみ)
