@@ -1,7 +1,7 @@
 #pragma once
 #include <Arduino.h>
 
-inline constexpr int SONIC_SPEED = 340;
+constexpr int SONIC_SPEED = 340;
 
 class HCSR04 {
 protected:

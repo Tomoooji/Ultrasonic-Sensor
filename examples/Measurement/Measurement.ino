@@ -27,7 +27,12 @@ void setup() {
 }
 
 void loop() {
+#if defined(ARDUINO_ARCH_ESP32)
+  sensor.read();
+  float distance = sensor.getDistance();
+#else
   float distance = sensor.read();
+#endif
   Serial.println(distance);
   delay(200);
 }
