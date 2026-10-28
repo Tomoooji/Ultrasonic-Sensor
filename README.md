@@ -15,3 +15,6 @@ Ultrasonic-Sensor/
 └─ README.md
 
 ```
+
+## 注意
+pinは参照です。  

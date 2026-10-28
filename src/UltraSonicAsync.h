@@ -25,9 +25,19 @@ public:
   HCSR04Async(const HCSR04Async &other)
       : HCSR04(std::move(other)), distance(other.distance.load()) {}
   */
+  ~HCSR04Async() {
+    if (taskHandle) {
+      vTaskDelete(taskHandle);
+      taskHandle = nullptr;
+    }
+  }
 
   void begin() override {
     HCSR04::begin();
+    if (taskHandle) {
+      vTaskDelete(taskHandle);
+      taskHandle = nullptr;
+    }
     xTaskCreatePinnedToCore(task_starter, "HCSR04Async_Task", 2048, this, 1, &taskHandle, 0);
   }
 
