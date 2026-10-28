@@ -1,0 +1,17 @@
+{
+    "name": "Ultrasonic-Sensor",
+    "version": "1.0.0",
+    "description": "ArduinoとESP32でHC-SR04を制御するライブラリ",
+    "keywords": ["Arduino", "ESP32", "Ultrasonic", "Sensor", "HC-SR04"],
+    "frameworks": "arduino",
+    "platforms": ["atmelavr", "espressif32"],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Tomoooji/Ultrasonic-Sensor.git"
+    },
+    "author": {
+        "name": "Tomoji Kanae",
+        "url": "github.com/tomoooji"
+        },
+    "license": "MIT"
+}
