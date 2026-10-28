@@ -1,6 +1,6 @@
 #pragma once
-#if defined(ARDUINO_ARCH_ESP32)
 
+#if defined(ARDUINO_ARCH_ESP32)
 #include "UltraSonic.h"
 #include <atomic>
 
@@ -28,8 +28,7 @@ public:
 
   void begin() override {
     HCSR04::begin();
-    xTaskCreatePinnedToCore(task_starter, "HCSR04Async_Task", 2048, this, 1,
-                            &taskHandle, 0);
+    xTaskCreatePinnedToCore(task_starter, "HCSR04Async_Task", 2048, this, 1, &taskHandle, 0);
   }
 
   void read() { this->distance.store(HCSR04::read()); }

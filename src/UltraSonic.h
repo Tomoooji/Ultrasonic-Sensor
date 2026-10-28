@@ -1,7 +1,7 @@
 #pragma once
 #include <Arduino.h>
 
-constexpr int SONIC_SPEED = 340;
+inline constexpr int SONIC_SPEED = 340;
 
 class HCSR04 {
 protected:
@@ -19,7 +19,7 @@ public:
       : pin_trig(pin_trig), pin_echo(pin_echo), send_pulse_length(send_pulse_length),
         send_span_min(send_span_min), read_timeout(read_timeout) {};
 
-        HCSR04(const uint8_t (&pins)[2],
+  HCSR04(const uint8_t (&pins)[2],
          const int send_pulse_length = 10 /*microsec*/,
          const int send_span_min = 200 /*millisec*/,
          const int read_timeout = 1000 /*millisec*/)
@@ -42,6 +42,6 @@ public:
   }
 
   static float calcDistance(unsigned long pulseWidth) {
-    return SONIC_SPEED / 2 * pulseWidth * 0.0001;
+    return SONIC_SPEED * pulseWidth * 0.00005;
   }
 };
